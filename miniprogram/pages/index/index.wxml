@@ -1,0 +1,31 @@
+<!--index.wxml-->
+<view class="container">
+  <!--自定义区-->
+  <view>请选择道路: {{message}}</view>
+  <view class="choose">
+    <button bindtap = "ClickLeft">左</button>
+    <button bindtap = "ClickRight">右</button>
+  </view>
+
+  <view class="choose">
+    <rich-text>可曾记得楼桑少年的旧梦</rich-text>
+  </view>
+
+  <form bindsubmit="formsubmit">
+    <input type="text" placeholder="请输入姓名" name='cloud_user_name'></input>
+    <input type="number" placeholder="请输入年龄" name='cloud_user_age'></input>
+    <button form-type="submit">提交数据库</button>
+  </form>
+
+  <text>显示数据库</text>
+  <view wx:for="{{cloud_data}}">
+    <view>姓名：{{item.name}}，年龄：{{item.age}}</view>
+  </view>
+
+  <text>
+
+  
+  
+  下一步输入数据然后插入云数据库
+  </text>
+</view>
