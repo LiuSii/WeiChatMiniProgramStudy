@@ -31,6 +31,20 @@ Page({
     })
   },
 
+    /*
+  从数据库test获取已有信息，并存储在cloud_data里
+  */
+ showInfo: function(){
+  cloud_db.collection('test').get({
+    success: res =>{
+      console.log(res.data)
+      this.setData({
+        cloud_data: res.data
+      })
+    }
+  })
+},
+
   formsubmit:function(e){
     const that = this;
     //上传数据
@@ -44,23 +58,10 @@ Page({
     }).catch(err=>{
       console.log(err);
     })
-    //更新数据
-    this.showInfo();
-  
-  },
-
-  /*
-  从数据库test获取已有信息，并存储在cloud_data里
-  */
-  showInfo: function(){
-    cloud_db.collection('test').get({
-      success: res =>{
-        console.log(res.data)
-        this.setData({
-          cloud_data: res.data
-        })
-      }
-    })
+    //延迟100m更新数据，不延迟的话会遇到插入数据有时可能过慢，不能实时刷新的问题
+    setTimeout(function(){
+      that.showInfo();
+    }, 100)
   },
 
   onLoad: function() {
