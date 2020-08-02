@@ -17,11 +17,15 @@
     <button form-type="submit">提交数据库</button>
   </form>
 
-  <text>显示数据库</text>
+  <text>显示数据库:</text>
   <view wx:for="{{cloud_data}}">
     <view>姓名：{{item.name}}，年龄：{{item.age}}</view>
   </view>
-
+  <button bindtap="ImageUpload">上传图片</button>
+  <text>显示图片:</text>
+  <block wx:for="{{images}}">
+    <image src="{{item.fileID}}" mode="widthFix"></image>
+  </block>
   <text>
 
   

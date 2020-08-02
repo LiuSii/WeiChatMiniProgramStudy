@@ -17,6 +17,7 @@ Page({
     requestResult: '',
 
     message: "XXX, 你好！",
+    images:[], // 存储下回来的图片
   },
 
   ClickLeft: function() {
@@ -37,7 +38,6 @@ Page({
  showInfo: function(){
   cloud_db.collection('test').get({
     success: res =>{
-      console.log(res.data)
       this.setData({
         cloud_data: res.data
       })
@@ -54,14 +54,53 @@ Page({
         age: e.detail.value.cloud_user_age
       }
     }).then(res=>{
-      console.log(res);
+      that.showInfo();
     }).catch(err=>{
-      console.log(err);
     })
     //延迟100m更新数据，不延迟的话会遇到插入数据有时可能过慢，不能实时刷新的问题
-    setTimeout(function(){
-      that.showInfo();
-    }, 100)
+    //setTimeout(function(){
+    //  that.showInfo();
+    //}, 100)
+  },
+
+  //云存储实现图片上传
+  ImageUpload:function(){
+    const that = this;
+    //从本地相册或者手机相册选择图片
+    wx.chooseImage({
+      count:1,
+      sizeType:['original', 'compressed'],
+      sourceType:['album', 'camera'],
+      success(res){
+        //获取图片之后上传
+        const tempFilesPaths = res.tempFilePaths;
+        wx.cloud.uploadFile({
+          cloudPath:new Date().getTime() + '.png',  // 以时间命名
+          filePath:tempFilesPaths[0], //1张图片的临时文件路径
+          success:res=>{
+            //存储到云数据库中
+            cloud_db.collection('image').add({
+              data:{
+                fileID:res.fileID
+              }
+            }).then(res=>{
+              that.getImages();
+            }).catch(err=>{
+            })
+          },
+          fail:console.error
+        })
+      }
+    })
+  },
+
+  //从数据库下载图片并存储到images中
+  getImages: function() {
+    cloud_db.collection('image').get().then(res=>{
+      this.setData({
+        images: res.data
+      })
+    })
   },
 
   onLoad: function() {
@@ -75,6 +114,7 @@ Page({
 
     //展示数据库信息
     this.showInfo();
+    this.getImages();
 
     // 获取用户信息
     wx.getSetting({
