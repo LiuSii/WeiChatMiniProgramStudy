@@ -103,6 +103,20 @@ Page({
     })
   },
 
+  //调用云函数sum
+  sum:function(){
+    wx.cloud.callFunction({
+      name:'sum',
+      data:{
+        a:2,
+        b:3
+      }
+    }).then(res=>{
+    }).catch(err=>{
+      console.log(err);
+    })
+  },
+
   onLoad: function() {
     var _this = this;
     if (!wx.cloud) {

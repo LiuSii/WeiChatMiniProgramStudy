@@ -21,15 +21,14 @@
   <view wx:for="{{cloud_data}}">
     <view>姓名：{{item.name}}，年龄：{{item.age}}</view>
   </view>
+  
+  <view>云函数</view>
+  <button bindtap="sum">调用云函数sum</button>
+  <button bindtap="getOpenId">获取当前用户openid</button>
+
   <button bindtap="ImageUpload">上传图片</button>
   <text>显示图片:</text>
   <block wx:for="{{images}}">
     <image src="{{item.fileID}}" mode="widthFix"></image>
   </block>
-  <text>
-
-  
-  
-  下一步实现云存储
-  </text>
 </view>
