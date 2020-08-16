@@ -28,7 +28,9 @@
 
   <button bindtap="ImageUpload">上传图片</button>
   <text>显示图片:</text>
+
   <block wx:for="{{images}}">
     <image src="{{item.fileID}}" mode="widthFix"></image>
   </block>
+
 </view>

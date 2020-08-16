@@ -1,0 +1,9 @@
+<!--pages/login/login.wxml-->
+
+<!-- 内容显示--头像 -->
+<view class="hori_center">
+  <image src='{{userInfo.avatarUrl}}' mode="widthFix" class='user_img'></image>
+  <text>{{userInfo.nickName}}</text>
+</view>
+<!--跳转按钮-->
+  <button bindtap="redirect" class="hori_center">\n进入共产星际</button>
