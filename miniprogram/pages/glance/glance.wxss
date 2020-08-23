@@ -1,0 +1,11 @@
+/* pages/glance/glance.wxss */
+.hori_center{
+  /*水平居中显示*/
+  display: flex;
+  justify-content: center;
+}
+.line{
+  width:100%; /*线的宽度*/
+  height: 2rpx; /*线的粗细*/
+  background: slategray; /*线的颜色*/
+}

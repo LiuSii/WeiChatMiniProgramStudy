@@ -1,0 +1,15 @@
+<!--pages/glance/glance.wxml-->
+<view class="container">
+  <form bindsubmit="InfoUpload">
+    <input type="text" placeholder="描述信息" name='description'></input>
+    <button form-type="submit">确定描述上传图片</button>
+  </form>
+
+  <!--自定义区-->
+  <block wx:for="{{images}}">
+    <image src="{{item.fileID}}" mode="widthFix"></image>
+    <text>{{item.description}}</text>
+    <button bindtap="DeleteInfo" data-index="{{index}}">删除该照片</button>
+    <view class="line"></view>
+  </block>
+</view>

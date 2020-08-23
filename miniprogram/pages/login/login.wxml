@@ -5,5 +5,13 @@
   <image src='{{userInfo.avatarUrl}}' mode="widthFix" class='user_img'></image>
   <text>{{userInfo.nickName}}</text>
 </view>
+
+获取原始文件名并展示（似乎不行？）
+获取用户openid并实现删除文件时比对
+实现上传文件，与图片格式自动统一处理
+多图片上传
+多图片删除
+先选择后添加描述
+
 <!--跳转按钮-->
   <button bindtap="redirect" class="hori_center">\n进入共产星际</button>
