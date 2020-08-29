@@ -9,7 +9,8 @@
   <block wx:for="{{images}}">
     <image src="{{item.fileID}}" mode="widthFix"></image>
     <text>{{item.description}}</text>
-    <button bindtap="DeleteInfo" data-index="{{index}}">删除该照片</button>
+    <!--非管理员用户不能够删除别人的照片-->
+    <button bindtap="DeleteInfo" data-index="{{index}}" wx:if="{{(item._openid == managerOpenID) || (item._openid == openid)}}">删除该照片</button>
     <view class="line"></view>
   </block>
 </view>

@@ -13,6 +13,8 @@ Page({
    */
   data: {
     images:[], // 存储下回来的图片
+    openid: '',  // 存储openid
+    managerOpenID:''  // 存储管理员Openid
   },
 
   //云存储实现图片上传
@@ -46,7 +48,6 @@ Page({
         })
       }
     })
-    console.log(that.data.images)
   },
 
   //从数据库下载图片并存储到images中
@@ -56,7 +57,6 @@ Page({
         images: res.data
       })
     })
-    console.log("0");
   },
 
   //删除文件
@@ -84,6 +84,27 @@ Page({
       fail: console.error
     })
   },
+  
+  GetOpenID: function(){
+    var that = this;
+    wx.cloud.callFunction({
+      name: 'GetOpenID',
+      complete: res=>{
+        that.setData({
+          openid: res.result.openid
+        })
+      }
+    })
+  },
+  GetManagerOpenID: function(e){
+    var that = this;
+
+    cloud_db.collection('mopenid').get().then(res=>{
+      that.setData({
+        managerOpenID: res.data[0].openid
+      })
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -91,6 +112,9 @@ Page({
   onLoad: function (options) {
     var that = this;
     this.InfoGet();
+
+    this.GetOpenID();  // 获取用户OpenID
+    this.GetManagerOpenID();  // 获取管理员OpenID
   },
 
   /**

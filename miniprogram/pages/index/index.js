@@ -33,10 +33,10 @@ Page({
   },
 
     /*
-  从数据库test获取已有信息，并存储在cloud_data里
+  从数据库获取已有信息，并存储在cloud_data里
   */
  showInfo: function(){
-  cloud_db.collection('test').get({
+  cloud_db.collection('mopenid').get({
     success: res =>{
       this.setData({
         cloud_data: res.data
@@ -48,10 +48,10 @@ Page({
   formsubmit:function(e){
     const that = this;
     //上传数据
-    cloud_db.collection('test').add({  // 集合名称
+    cloud_db.collection('mopenid').add({  // 集合名称
       data:{
-        name: e.detail.value.cloud_user_name,
-        age: e.detail.value.cloud_user_age
+        manager: e.detail.value.cloud_user_name,
+        openid: e.detail.value.cloud_user_age
       }
     }).then(res=>{
       that.showInfo();
