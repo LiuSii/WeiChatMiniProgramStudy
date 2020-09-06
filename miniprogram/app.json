@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/login/login",
-    "pages/glance/glance"
+    "pages/glance/glance",
+    "pages/view/view"
   ],
 
   "window": {

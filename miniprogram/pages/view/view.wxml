@@ -1,0 +1,6 @@
+<!--pages/view/view.wxml-->
+<view>
+  <block wx: for = "{{images}}" wx: key = >
+
+  </block>
+</view>

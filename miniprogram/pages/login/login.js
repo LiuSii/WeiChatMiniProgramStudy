@@ -45,7 +45,7 @@ Page({
   /**
    * 跳转到主页
    */
-  redirect: function () {
+  redirect_glance: function () {
     wx.redirectTo({
       url: '../glance/glance'
     })
