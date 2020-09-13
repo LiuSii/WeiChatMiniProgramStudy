@@ -1,6 +1,18 @@
 <!--pages/view/view.wxml-->
 <view>
-  <block wx: for = "{{images}}" wx: key = >
+  <input type="text" placeholder="描述信息" name='description'></input>
 
-  </block>
+  <view>
+    <button bindtap="chooseImage">添加图片</button>
+  </view>
+  <view class="question-images">
+    <block wx:for="{{images}}" wx:key="*this">
+      <view class="q-image-wrap">
+        <image class="q-image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+        <view class="q-image-remover" data-idx="{{index}}" bindtap="removeImage">删除</view>
+      </view>
+    </block>
+  </view>
+
+  <button class="weui-btn" type="primary" bindtap="submitForm">提交</button>
 </view>

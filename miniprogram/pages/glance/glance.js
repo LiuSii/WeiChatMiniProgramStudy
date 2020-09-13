@@ -70,6 +70,7 @@ Page({
       }
     })
   },
+  
   GetManagerOpenID: function(e){
     var that = this;
 

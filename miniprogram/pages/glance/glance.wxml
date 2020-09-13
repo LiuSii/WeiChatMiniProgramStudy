@@ -1,8 +1,7 @@
 <!--pages/glance/glance.wxml-->
 <view class="container">
   <form bindsubmit="InfoUpload">
-    <input type="text" placeholder="描述信息" name='description'></input>
-    <button form-type="submit">确定描述上传图片</button>
+    <button form-type="submit">上传图片</button>
   </form>
 
   <!--自定义区-->
