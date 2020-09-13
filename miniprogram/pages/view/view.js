@@ -72,12 +72,8 @@ Page({
           success:res=>{
             console.log("123");
             //存储到云数据库中
-            cloud_db.collection('image').add({
-              data:{
-                fileID:res.fileID,  // 存储云存储中的照片地址
-                //description:e.detail.value.description   // 存储描述信息
-              }
-            })
+            //显示缩略图，多个图片存储到一个数组
+
             // cloud_db.collection('image').add({
             //   data:{
             //     fileID:"ewer",  // 存储云存储中的照片地址

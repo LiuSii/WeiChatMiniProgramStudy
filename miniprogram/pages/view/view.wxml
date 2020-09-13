@@ -1,7 +1,6 @@
 <!--pages/view/view.wxml-->
-<view>
+<form bindsubmit="formsubmit">
   <input type="text" placeholder="描述信息" name='description'></input>
-
   <view>
     <button bindtap="chooseImage">添加图片</button>
   </view>
@@ -13,6 +12,5 @@
       </view>
     </block>
   </view>
-
-  <button class="weui-btn" type="primary" bindtap="submitForm">提交</button>
-</view>
+  <button form-type="submit">提交</button>
+</form>
