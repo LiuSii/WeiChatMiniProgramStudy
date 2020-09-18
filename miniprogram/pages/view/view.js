@@ -12,45 +12,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    images: [],  // 存储下回来的照片
-
-    fileID:"",  // 存储云存储中的照片地址
-    description:""  // 存储描述信息
+    images: []  // 照片数组
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // const that = this;
-    // //从本地相册或者手机相册选择图片
-    // wx.chooseImage({
-    //   count:1,
-    //   sizeType:['original', 'compressed'],
-    //   sourceType:['album', 'camera'],
-    //   success(res){
-    //     //获取图片之后上传
-    //     const tempFilesPaths = res.tempFilePaths;
-    //     const tempFilesName = res.tempFilesName;
-    //     wx.cloud.uploadFile({
-    //       cloudPath: new Date().getTime() + '.png',  // 以时间命名
-    //       filePath:tempFilesPaths[0], //1张图片的临时文件路径
-    //       success:res=>{
-    //         //存储到云数据库中
-    //         cloud_db.collection('image').add({
-    //           data:{
-    //             fileID:res.fileID,  // 存储云存储中的照片地址
-    //             description:e.detail.value.description   // 存储描述信息
-    //           }
-    //         }).then(res=>{
-    //           that.InfoGet();   // 上传成功后显示
-    //         }).catch(err=>{
-    //         })
-    //       },
-    //       fail:console.error
-    //     })
-    //   }
-    // })
+
   },
 
   /**
@@ -59,38 +28,33 @@ Page({
    */
   chooseImage(e) {
     wx.chooseImage({
-      count: 1,
+      count: 9,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success(res){
-        //获取图片之后上传
+        //获取图片上传云存储，显示缩略图，用内存数组存储
         const tempFilesPaths = res.tempFilePaths;
-        const tempFilesName = res.tempFilesName;
-        wx.cloud.uploadFile({
-          cloudPath: new Date().getTime() + '.png',  // 以时间命名
-          filePath:tempFilesPaths[0], //1张图片的临时文件路径
-          success:res=>{
-            console.log("123");
-            //存储到云数据库中
-            //显示缩略图，多个图片存储到一个数组
+             // 一次选择的图片新加到数组中
 
-            // cloud_db.collection('image').add({
-            //   data:{
-            //     fileID:"ewer",  // 存储云存储中的照片地址
-            //     description:e.detail.value.description   // 存储描述信息
-            //   }
-            // }).then(res=>{
-            //   console.log("1233");
-            //   wx.redirectTo({
-            //     url: '../glance/glance',  // 上传成功后显示
-            //   })
-            // }).catch(err=>{
-            //   console.log("45");
-            // })
-            console.log("45");
-          },
-          fail:console.error
-        })
+
+        //确定好的图片上传云数据库
+
+        // wx.cloud.uploadFile({
+        //   cloudPath: new Date().getTime() + '.png',  // 以时间命名
+        //   filePath:tempFilesPaths[0], //1张图片的临时文件路径
+
+        //   success:res=>{
+        //     console.log("123");
+        //     //存储到云数据库中
+        //     //显示缩略图，多个图片存储到一个数组
+        //     cloud_db.collection('image').add({
+        //       data: {
+        //         fileID: tempFilesPaths
+        //       }
+        //     })
+        //   },
+        //   fail:console.error
+        // })
       }
     })
   },
