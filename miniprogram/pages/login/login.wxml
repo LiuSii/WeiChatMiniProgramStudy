@@ -10,5 +10,7 @@
 多图片删除
 先选择后添加描述
 
+不想做啦！
+
 <!--跳转按钮-->
   <button bindtap="redirect_glance" class="hori_center">\n进入共产星际</button>

@@ -9,6 +9,7 @@ Page({
     logged: false,
     takeSession: false,
     requestResult: '',
+    test:''
   },
 
   /**
